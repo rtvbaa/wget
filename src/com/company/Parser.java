@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Map;
-
 public class Parser {
 
     public static void parser(String[] args) {

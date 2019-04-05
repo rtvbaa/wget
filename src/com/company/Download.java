@@ -10,7 +10,7 @@ public class Download {
     public static void downloadFile(String ur) throws IOException {
         URL url = new URL(ur);
         InputStream inputStream = url.openStream();
-        Files.copy(inputStream, new File("Download/google.png").toPath());
+        Files.copy(inputStream, new File("Download/" + Cofig.getFilename()).toPath());
     }
 
 }

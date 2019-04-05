@@ -6,7 +6,7 @@ public class Cofig {
     private static String filepath;
     private static String foldername;
     private static String url;
-    private static String filename;
+    private static String filename = "google.png";
 
     public static String getNumofthreads() {
         return numofthreads;
