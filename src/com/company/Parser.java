@@ -1,11 +1,11 @@
 package com.company;
 
 public class Parser {
-    public static String numofthreads;
-    public static String speed;
-    public static String filepath;
-    public static String foldername;
-    public static String url;
+    private static String numofthreads;
+    private static String speed;
+    private static String filepath;
+    private static String foldername;
+    private static String url;
 
     public static String parser(String[] args) {
         args.toString().trim().split(" +");
