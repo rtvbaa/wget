@@ -6,6 +6,7 @@ public class Parser {
     private static String filepath;
     private static String foldername;
     private static String url;
+    private static String filename;
 
     public static String parser(String[] args) {
         args.toString().trim().split(" +");
@@ -21,7 +22,8 @@ public class Parser {
         else if (args.contains("-l")) speed = args;
         else if (args.contains("-f")) filepath = args;
         else if (args.contains("-o")) foldername = args;
-        else url = args;
+        else if (args.contains("http")) url = args;
+        else filename = args;
     }
 }
 
