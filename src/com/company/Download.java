@@ -7,8 +7,8 @@ import java.net.URL;
 import java.nio.file.Files;
 
 public class Download {
-    public static void downloadFile() throws IOException {
-        URL url = new URL("https://www.google.com.ua/images/srpr/logo11w.png");
+    public static void downloadFile(String ur) throws IOException {
+        URL url = new URL(ur);
         InputStream inputStream = url.openStream();
         Files.copy(inputStream, new File("Download/google.png").toPath());
     }
