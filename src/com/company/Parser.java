@@ -9,13 +9,19 @@ public class Parser {
 
     public static String parser(String[] args) {
         args.toString().trim().split(" +");
-        if (args[0].contains("-n")) numofthreads = args[0];
-        else if (args[0].contains("-l")) speed = args[0];
-        else if (args[0].contains("-f")) filepath = args[0];
-        else if (args[0].contains("-o")) foldername = args[0];
-        else url = args[0];
-
-        System.out.println(url);
+        for (int i = 0; i < args.length; i++) {
+            param(args[i]);
+        }
+        System.out.println(filepath);
         return url;
     }
+
+    public static void param(String args) {
+        if (args.contains("-n")) numofthreads = args;
+        else if (args.contains("-l")) speed = args;
+        else if (args.contains("-f")) filepath = args;
+        else if (args.contains("-o")) foldername = args;
+        else url = args;
+    }
 }
+
