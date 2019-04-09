@@ -15,10 +15,6 @@ public class Threads {
                 e.printStackTrace();
             }
         });
-        try {
-            executor.awaitTermination(1, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException ie) {
-            executor.shutdownNow();
-        }
+
     }
 }
