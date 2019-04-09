@@ -4,7 +4,7 @@ public class Cofig {
     private static String numofthreads;
     private static String speed;
     private static String filepath;
-    private static String foldername;
+    private static String foldername = "Download/";
     private static String url = "https://www.google.com.ua/images/srpr/logo11w.png";
     private static String filename = "google.png";
 
