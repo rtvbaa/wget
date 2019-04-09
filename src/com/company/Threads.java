@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Threads {
-    public static void threadsdownloads(){
+    public static void threadsdownloads() throws InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(5);
         executor.submit(() -> {
             try {
@@ -15,6 +15,7 @@ public class Threads {
                 e.printStackTrace();
             }
         });
-
+        executor.shutdown();
+        executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
     }
 }
