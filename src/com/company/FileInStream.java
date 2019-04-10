@@ -22,6 +22,7 @@ public class FileInStream {
             String filename = fileSplit[1];
             paramListFromFile.put(url, filename);
         }
+        System.out.println(paramListFromFile);
         return paramListFromFile;
     }
 

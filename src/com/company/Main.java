@@ -11,14 +11,15 @@ public class Main {
             Cofig.setUrl(entry.getKey().toString());
             Cofig.setFilename(entry.getValue().toString());
 
-        }
-        System.out.println(Cofig.getNumofthreads());
-        System.out.println(Cofig.getSpeed());
-        System.out.println(Cofig.getFilepath());
-        System.out.println(Cofig.getFoldername());
-        System.out.println(Cofig.getUrl());
-        System.out.println(Cofig.getFilename());
+            System.out.println(Cofig.getNumofthreads());
+            System.out.println(Cofig.getSpeed());
+            System.out.println(Cofig.getFilepath());
+            System.out.println(Cofig.getFoldername());
+            System.out.println(Cofig.getUrl());
+            System.out.println(Cofig.getFilename());
 
-        Threads.threadsdownloads();
+            Threads.threadsdownloads();
+        }
+
     }
 }
