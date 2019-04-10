@@ -1,17 +1,17 @@
 package com.company;
 
 import java.io.IOException;
-
-import static com.company.FileInStream.fileInStream;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         Parser.parser(args);
+        for (Map.Entry entry : FileInStream.fileInStream().entrySet()) {
+            Cofig.setUrl(entry.getKey().toString());
+            Cofig.setFilename(entry.getValue().toString());
 
-        Cofig.setUrl(FileInStream.fileInStream().get(0));
-        Cofig.setFilename(FileInStream.fileInStream().get(1));
-
+        }
         System.out.println(Cofig.getNumofthreads());
         System.out.println(Cofig.getSpeed());
         System.out.println(Cofig.getFilepath());

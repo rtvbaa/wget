@@ -3,7 +3,8 @@ package com.company;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import static com.company.Cofig.getFilepath;
@@ -11,14 +12,17 @@ import static com.company.Cofig.getFilepath;
 public class FileInStream {
 
 
-    public static ArrayList<String> fileInStream() throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(getFilepath());
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-        ArrayList<String> paramListFromFile = new ArrayList<>();
+    public static Map<String, String> fileInStream() throws IOException {
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(getFilepath()));
+        Map<String, String> paramListFromFile = new HashMap<>();
         Scanner scanner = new Scanner(bufferedInputStream);
-        while(scanner.hasNext()){
-            paramListFromFile.add(scanner.next());
+        while(scanner.hasNextLine()){
+            String fileSplit[] = scanner.nextLine().split(" +");
+            String url = fileSplit[0];
+            String filename = fileSplit[1];
+            paramListFromFile.put(url, filename);
         }
         return paramListFromFile;
     }
+
 }
