@@ -3,26 +3,22 @@ package com.company;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.company.Cofig.getFileInStream;
+import static com.company.Cofig.getFilepath;
 
 public class FileInStream {
 
 
-    public static void fileInStream() throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(getFileInStream());
+    public static ArrayList<String> fileInStream() throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(getFilepath());
         BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-        ArrayList<String> set = new ArrayList<>();
-        Scanner scanner = new Scanner(fileInputStream);
-        while(scanner.hasNextLine()){
-            set.add(scanner.nextLine());
+        ArrayList<String> paramListFromFile = new ArrayList<>();
+        Scanner scanner = new Scanner(bufferedInputStream);
+        while(scanner.hasNext()){
+            paramListFromFile.add(scanner.next());
         }
-
-        for (String t: set) {
-            System.out.println(t);
-        }
+        return paramListFromFile;
     }
 }

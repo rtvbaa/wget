@@ -4,18 +4,9 @@ public class Cofig {
     private static String numofthreads;
     private static String speed;
     private static String filepath;
-    private static String foldername = "Download/";
-    private static String url = "https://www.google.com.ua/images/srpr/logo11w.png";
-    private static String filename = "google.png";
-    private static String fileInStream = "Download/download.txt";
-
-    public static String getFileInStream() {
-        return fileInStream;
-    }
-
-    public static void setFileInStream(String fileInStream) {
-        Cofig.fileInStream = fileInStream;
-    }
+    private static String foldername;
+    private static String url;
+    private static String filename;
 
     public static String getNumofthreads() {
         return numofthreads;
