@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Threads {
     public static void threadsdownloads() throws InterruptedException {
-        ExecutorService executor = Executors.newFixedThreadPool(5);
+        ExecutorService executor = Executors.newFixedThreadPool(Cofig.getNumofthreads());
         executor.submit(() -> {
             try {
                 Download.downloadFile(Cofig.getUrl());

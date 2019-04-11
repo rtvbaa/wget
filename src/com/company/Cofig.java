@@ -1,19 +1,19 @@
 package com.company;
 
 public class Cofig {
-    private static String numofthreads;
+    private static int numofthreads;
     private static String speed;
     private static String filepath;
     private static String foldername;
     private static String url;
     private static String filename;
 
-    public static String getNumofthreads() {
+    public static int getNumofthreads() {
         return numofthreads;
     }
 
     public static void setNumofthreads(String numofthreads) {
-        Cofig.numofthreads = numofthreads;
+        Cofig.numofthreads = Integer.parseInt(numofthreads);
     }
 
     public static String getSpeed() {
