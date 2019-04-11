@@ -1,6 +1,6 @@
 package com.company;
 
-public class Cofig {
+public class Config {
     private static int numofthreads;
     private static String speed;
     private static String filepath;
@@ -13,7 +13,7 @@ public class Cofig {
     }
 
     public static void setNumofthreads(String numofthreads) {
-        Cofig.numofthreads = Integer.parseInt(numofthreads);
+        Config.numofthreads = Integer.parseInt(numofthreads);
     }
 
     public static String getSpeed() {
@@ -21,7 +21,7 @@ public class Cofig {
     }
 
     public static void setSpeed(String speed) {
-        Cofig.speed = speed;
+        Config.speed = speed;
     }
 
     public static String getFilepath() {
@@ -29,7 +29,7 @@ public class Cofig {
     }
 
     public static void setFilepath(String filepath) {
-        Cofig.filepath = filepath;
+        Config.filepath = filepath;
     }
 
     public static String getFoldername() {
@@ -37,7 +37,7 @@ public class Cofig {
     }
 
     public static void setFoldername(String foldername) {
-        Cofig.foldername = foldername;
+        Config.foldername = foldername;
     }
 
     public static String getUrl() {
@@ -45,7 +45,7 @@ public class Cofig {
     }
 
     public static void setUrl(String url) {
-        Cofig.url = url;
+        Config.url = url;
     }
 
     public static String getFilename() {
@@ -53,6 +53,6 @@ public class Cofig {
     }
 
     public static void setFilename(String filename) {
-        Cofig.filename = filename;
+        Config.filename = filename;
     }
 }

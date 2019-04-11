@@ -8,15 +8,15 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         Parser.parser(args);
         for (Map.Entry entry : FileInStream.fileInStream().entrySet()) {
-            Cofig.setFilename(entry.getKey().toString());
-            Cofig.setUrl(entry.getValue().toString());
+            Config.setFilename(entry.getKey().toString());
+            Config.setUrl(entry.getValue().toString());
 
-            System.out.println(Cofig.getNumofthreads());
-            System.out.println(Cofig.getSpeed());
-            System.out.println(Cofig.getFilepath());
-            System.out.println(Cofig.getFoldername());
-            System.out.println(Cofig.getUrl());
-            System.out.println(Cofig.getFilename());
+            System.out.println(Config.getNumofthreads());
+            System.out.println(Config.getSpeed());
+            System.out.println(Config.getFilepath());
+            System.out.println(Config.getFoldername());
+            System.out.println(Config.getUrl());
+            System.out.println(Config.getFilename());
 
             Threads.threadsdownloads();
         }

@@ -7,10 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Threads {
     public static void threadsdownloads() throws InterruptedException {
-        ExecutorService executor = Executors.newFixedThreadPool(Cofig.getNumofthreads());
+        ExecutorService executor = Executors.newFixedThreadPool(Config.getNumofthreads());
         executor.submit(() -> {
             try {
-                Download.downloadFile(Cofig.getUrl());
+                Download.downloadFile(Config.getUrl());
             } catch (IOException e) {
                 e.printStackTrace();
             }

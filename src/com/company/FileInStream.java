@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static com.company.Cofig.getFilepath;
+import static com.company.Config.getFilepath;
 
 public class FileInStream {
 

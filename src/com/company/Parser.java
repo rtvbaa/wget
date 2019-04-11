@@ -10,12 +10,12 @@ public class Parser {
     }
 
     public static void param(String argm1, String arg) {
-        if (argm1.contains("-n")) Cofig.setNumofthreads(arg);
-        else if (argm1.contains("-l")) Cofig.setSpeed(arg);
-        else if (argm1.contains("-f")) Cofig.setFilepath(arg);
-        else if (argm1.contains("-o")) Cofig.setFoldername(arg);
-//        else if (argm1.contains("http")) Cofig.setUrl(arg);
-//        else Cofig.setFilename(arg);
+        if (argm1.contains("-n")) Config.setNumofthreads(arg);
+        else if (argm1.contains("-l")) Config.setSpeed(arg);
+        else if (argm1.contains("-f")) Config.setFilepath(arg);
+        else if (argm1.contains("-o")) Config.setFoldername(arg);
+//        else if (argm1.contains("http")) Config.setUrl(arg);
+//        else Config.setFilename(arg);
     }
 }
 

@@ -5,15 +5,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Download {
+
+
     public static void downloadFile(String ur) throws IOException {
         URL url = new URL(ur);
         InputStream inputStream = url.openStream();
-        if (Files.exists(new File(Cofig.getFoldername() + Cofig.getFilename()).toPath())) {
-            Files.delete(new File(Cofig.getFoldername() + Cofig.getFilename()).toPath());
+        Path path = new File(Config.getFoldername() + Config.getFilename()).toPath();
+        if (Files.exists(path)) {
+            Files.delete(path);
         }
-        Files.copy(inputStream, new File(Cofig.getFoldername() + Cofig.getFilename()).toPath());
+        Files.copy(inputStream, path);
     }
 
 }
