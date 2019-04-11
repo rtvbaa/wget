@@ -20,9 +20,9 @@ public class FileInStream {
             String fileSplit[] = scanner.nextLine().split(" +");
             String url = fileSplit[0];
             String filename = fileSplit[1];
-            paramListFromFile.put(url, filename);
+            paramListFromFile.put(filename, url);
         }
-        System.out.println(paramListFromFile);
+//        System.out.println(paramListFromFile);
         return paramListFromFile;
     }
 
