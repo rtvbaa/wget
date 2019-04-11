@@ -10,7 +10,5 @@ public class Main {
         Parser.parser(args);
         fileInStream();
         Threads.threadsdownloads();
-
-
     }
 }

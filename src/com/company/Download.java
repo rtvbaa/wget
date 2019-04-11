@@ -7,17 +7,37 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class Download {
+public class Download implements Runnable {
+    private URL url;
+    private String filename;
+
+    public Download(String filename, String ur) throws IOException {
+        url = new URL(ur);
+        this.filename = filename;
 
 
-    public static void downloadFile(String filename, String ur) throws IOException {
-        URL url = new URL(ur);
-        InputStream inputStream = url.openStream();
-        Path path = new File(Config.getFoldername() + "/" + filename).toPath();
-        if (Files.exists(path)) {
-            Files.delete(path);
-        }
-        Files.copy(inputStream, path);
     }
 
+    @Override
+    public void run() {
+        InputStream inputStream = null;
+        try {
+            inputStream = url.openStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Path path = new File(Config.getFoldername() + "/" + filename).toPath();
+        if (Files.exists(path)) {
+            try {
+                Files.delete(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            Files.copy(inputStream, path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
