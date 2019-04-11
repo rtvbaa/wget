@@ -12,7 +12,7 @@ import static com.company.Config.getFilepath;
 public class FileInStream {
 
 
-    public static Map<String, String> fileInStream() throws IOException {
+    public static void fileInStream() throws IOException {
         BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(getFilepath()));
         Map<String, String> paramListFromFile = new HashMap<>();
         Scanner scanner = new Scanner(bufferedInputStream);
@@ -22,8 +22,8 @@ public class FileInStream {
             String filename = fileSplit[1];
             paramListFromFile.put(filename, url);
         }
+        Config.setFilenameAndUrl(paramListFromFile);
 //        System.out.println(paramListFromFile);
-        return paramListFromFile;
     }
 
 }

@@ -10,10 +10,10 @@ import java.nio.file.Path;
 public class Download {
 
 
-    public static void downloadFile(String ur) throws IOException {
+    public static void downloadFile(String filename, String ur) throws IOException {
         URL url = new URL(ur);
         InputStream inputStream = url.openStream();
-        Path path = new File(Config.getFoldername() + Config.getFilename()).toPath();
+        Path path = new File(Config.getFoldername() + "/" + filename).toPath();
         if (Files.exists(path)) {
             Files.delete(path);
         }

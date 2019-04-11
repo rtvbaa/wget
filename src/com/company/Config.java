@@ -1,12 +1,21 @@
 package com.company;
 
+import java.util.Map;
+
 public class Config {
     private static int numofthreads;
     private static String speed;
     private static String filepath;
     private static String foldername;
-    private static String url;
-    private static String filename;
+    private static Map<String, String> filenameAndUrl;
+
+    public static Map<String, String> getFilenameAndUrl() {
+        return filenameAndUrl;
+    }
+
+    public static void setFilenameAndUrl(Map<String, String> filenameAndUrl) {
+        Config.filenameAndUrl = filenameAndUrl;
+    }
 
     public static int getNumofthreads() {
         return numofthreads;
@@ -38,21 +47,5 @@ public class Config {
 
     public static void setFoldername(String foldername) {
         Config.foldername = foldername;
-    }
-
-    public static String getUrl() {
-        return url;
-    }
-
-    public static void setUrl(String url) {
-        Config.url = url;
-    }
-
-    public static String getFilename() {
-        return filename;
-    }
-
-    public static void setFilename(String filename) {
-        Config.filename = filename;
     }
 }
