@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,20 +24,13 @@ public class Download implements Runnable {
         InputStream inputStream = null;
         try {
             inputStream = url.openStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Path path = new File(Config.getFoldername() + "/" + filename).toPath();
-        if (Files.exists(path)) {
-            try {
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+            Path path = new File(Config.getFoldername() + "/" + filename).toPath();
+            if (Files.exists(path)) {
                 Files.delete(path);
-            } catch (IOException e) {
-                e.printStackTrace();
+                Files.copy(bufferedInputStream, path);
             }
-        }
-        try {
-            Files.copy(inputStream, path);
-        } catch (IOException e) {
+        } catch(IOException e){
             e.printStackTrace();
         }
     }
