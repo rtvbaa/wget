@@ -28,8 +28,12 @@ public class Download implements Runnable {
             File file = new File(Config.getFoldername() + "/" + filename);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
-            while ((bufferedInputStream.read()) != -1) {
-                fileOutputStream.write(bufferedInputStream.read());
+            byte[] buffer = new byte[1000000000];
+            while (inputStream.available() > 0)
+            {
+
+                int count = inputStream.read(buffer);
+                fileOutputStream.write(buffer, 0, count);
             }
             fileOutputStream.close();
 
