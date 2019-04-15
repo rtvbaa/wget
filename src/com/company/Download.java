@@ -28,14 +28,19 @@ public class Download implements Runnable {
             File file = new File(Config.getFoldername() + "/" + filename);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
-            byte[] buffer = new byte[1000000000];
+            byte[] buffer = new byte[100];
+
+            SpeedLimit.start();
             while (inputStream.available() > 0)
             {
 
                 int count = inputStream.read(buffer);
+//                System.out.println(count);
                 fileOutputStream.write(buffer, 0, count);
             }
+
             fileOutputStream.close();
+            System.out.println(SpeedLimit.finish());
 
         } catch(IOException e){
             e.printStackTrace();
