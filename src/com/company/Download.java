@@ -36,16 +36,15 @@ public class Download implements Runnable {
                 int count = inputStream.read(buffer);
 //                System.out.println(count);
                 fileOutputStream.write(buffer, 0, count);
-                while (SpeedLimit.finish() < 190){
-                    System.out.println("wait");
+                while (SpeedLimit.finish() < 200){
+                    wait(1000);
+                    System.out.println(SpeedLimit.finish());
                 }
             }
-
+            System.out.println(SpeedLimit.finish());
             fileOutputStream.close();
 
-            System.out.println(SpeedLimit.finish());
-
-        } catch(IOException e){
+        } catch(IOException | InterruptedException e){
             e.printStackTrace();
         }
     }
