@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Date;
 
 public class Download implements Runnable {
     private URL url;
@@ -28,20 +29,21 @@ public class Download implements Runnable {
             File file = new File(Config.getFoldername() + "/" + filename);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
-            byte[] buffer = new byte[100];
+            byte[] buffer = new byte[1024*1024];
 
-            SpeedLimit.start();
+
             while (inputStream.available() > 0)
             {
+                SpeedLimit.start();
                 int count = inputStream.read(buffer);
-//                System.out.println(count);
                 fileOutputStream.write(buffer, 0, count);
-                while (SpeedLimit.finish() < 200){
-                    wait(1000);
-                    System.out.println(SpeedLimit.finish());
+                while (SpeedLimit.finish() < 10000) {
+                    Thread.sleep(1000);
+//                    System.out.println(SpeedLimit.finish());
                 }
+                Date currentTime = new Date();
+                System.out.println(currentTime.getMinutes() + "." + currentTime.getSeconds());
             }
-            System.out.println(SpeedLimit.finish());
             fileOutputStream.close();
 
         } catch(IOException | InterruptedException e){
