@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Config {
     private static int numofthreads;
-    private static String speed;
+    private static Long speed;
     private static String filepath;
     private static String foldername;
     private static Map<String, String> filenameAndUrl;
@@ -25,12 +25,12 @@ public class Config {
         Config.numofthreads = Integer.parseInt(numofthreads);
     }
 
-    public static String getSpeed() {
+    public static Long getSpeed() {
         return speed;
     }
 
     public static void setSpeed(String speed) {
-        Config.speed = speed;
+        Config.speed = Long.parseLong(speed);
     }
 
     public static String getFilepath() {

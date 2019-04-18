@@ -4,17 +4,12 @@ public class SpeedLimit {
     private static long finish;
     private static long start;
 
-    public static void start(){
+    public static void start() {
         start = System.currentTimeMillis();
-
-
     }
 
-    public static long finish(){
-
+    public static void finish() throws InterruptedException {
         finish = System.currentTimeMillis() - start;
-        return finish;
-
+        Thread.sleep(Config.getSpeed() - finish);
     }
-
 }

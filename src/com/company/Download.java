@@ -29,7 +29,7 @@ public class Download implements Runnable {
             File file = new File(Config.getFoldername() + "/" + filename);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
-            byte[] buffer = new byte[1024*1024];
+            byte[] buffer = new byte[1024];
 
 
             while (inputStream.available() > 0)
@@ -37,10 +37,7 @@ public class Download implements Runnable {
                 SpeedLimit.start();
                 int count = inputStream.read(buffer);
                 fileOutputStream.write(buffer, 0, count);
-                while (SpeedLimit.finish() < 10000) {
-                    Thread.sleep(1000);
-//                    System.out.println(SpeedLimit.finish());
-                }
+                SpeedLimit.finish();
                 Date currentTime = new Date();
                 System.out.println(currentTime.getMinutes() + "." + currentTime.getSeconds());
             }
