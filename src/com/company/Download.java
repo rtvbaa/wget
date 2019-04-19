@@ -36,10 +36,11 @@ public class Download implements Runnable {
             {
                 SpeedLimit.start();
                 int count = inputStream.read(buffer);
+                statistics.addBytes(count);
                 fileOutputStream.write(buffer, 0, count);
                 SpeedLimit.finish();
-                Date currentTime = new Date();
-                System.out.println(currentTime.getMinutes() + "." + currentTime.getSeconds());
+//                Date currentTime = new Date();
+//                System.out.println(currentTime.getMinutes() + "." + currentTime.getSeconds());
             }
             fileOutputStream.close();
 
