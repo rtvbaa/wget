@@ -18,14 +18,28 @@ public class Download implements Runnable {
     @Override
     public void run() {
 
+
+
         File file = new File(Config.getFoldername() + "/" + filename);
-        try (BufferedInputStream in = new BufferedInputStream(url.openStream());
-             FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+        long filesize = 0;
+
+        try
+        {
+
+            if (Files.exists(file.toPath())) {
+                Files.delete(file.toPath());
+            }
+
+            InputStream inputStream = url.openStream();
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
-            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+            while ((bytesRead = inputStream.read(dataBuffer, 0, 1024)) != -1) {
+                filesize = filesize + dataBuffer.length;
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
             }
+            System.out.println("Размер файла " + file.length());
+            Statistics.addBytes(filesize);
         } catch (IOException e) {
         }
 //        try {
