@@ -31,17 +31,18 @@ public class Download implements Runnable {
 
             byte[] buffer = new byte[1024];
 
+            long filesize = 0;
+
 
             while (inputStream.available() > 0)
             {
                 SpeedLimit.start();
                 int count = inputStream.read(buffer);
-                statistics.addBytes(count);
+                filesize = filesize + count;
                 fileOutputStream.write(buffer, 0, count);
                 SpeedLimit.finish();
-//                Date currentTime = new Date();
-//                System.out.println(currentTime.getMinutes() + "." + currentTime.getSeconds());
             }
+            Statistics.addBytes(filesize);
             fileOutputStream.close();
 
         } catch(IOException | InterruptedException e){
