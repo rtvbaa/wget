@@ -17,36 +17,51 @@ public class Download implements Runnable {
 
     @Override
     public void run() {
-        try {
-            InputStream inputStream = url.openStream();
-            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
 
-            Path path = new File(Config.getFoldername() + "/" + filename).toPath();
-            if (Files.exists(path)) {
-                Files.delete(path);
+        File file = new File(Config.getFoldername() + "/" + filename);
+        try (BufferedInputStream in = new BufferedInputStream(url.openStream());
+             FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+            byte dataBuffer[] = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+                fileOutputStream.write(dataBuffer, 0, bytesRead);
             }
-
-            File file = new File(Config.getFoldername() + "/" + filename);
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-
-            byte[] buffer = new byte[1024];
-
-            long filesize = 0;
-
-
-            while (inputStream.available() > 0)
-            {
-                SpeedLimit.start();
-                int count = inputStream.read(buffer);
-                filesize = filesize + count;
-                fileOutputStream.write(buffer, 0, count);
-                SpeedLimit.finish();
-            }
-            Statistics.addBytes(filesize);
-            fileOutputStream.close();
-
-        } catch(IOException | InterruptedException e){
-            e.printStackTrace();
+        } catch (IOException e) {
         }
+//        try {
+//            InputStream inputStream = url.openStream();
+//            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+//
+//            Path path = new File(Config.getFoldername() + "/" + filename).toPath();
+//            if (Files.exists(path)) {
+//                Files.delete(path);
+//            }
+
+
+
+
+
+//            File file = new File(Config.getFoldername() + "/" + filename);
+//            FileOutputStream fileOutputStream = new FileOutputStream(file);
+//
+//            byte[] buffer = new byte[1024];
+//
+//            long filesize = 0;
+//
+//
+//            while (inputStream.available() > 0)
+//            {
+////                SpeedLimit.start();
+//                int count = inputStream.read(buffer);
+////                filesize = filesize + count;
+//                fileOutputStream.write(buffer, 0, count);
+////                SpeedLimit.finish();
+//            }
+//            Statistics.addBytes(filesize);
+//            fileOutputStream.close();
+
+//        } catch(IOException  e){
+//            e.printStackTrace();
+//        }
     }
 }

@@ -10,8 +10,8 @@ public class SpeedLimit {
 
     public static void finish() throws InterruptedException {
         finish = (System.currentTimeMillis() - start);
-//        Thread.sleep(Config.getSpeed() - finish);
-//        System.out.println(start);
-//        System.out.println(finish);
+        Thread.sleep(Config.getSpeed() - finish);
+        System.out.println(start);
+        System.out.println(finish);
     }
 }
