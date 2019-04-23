@@ -1,17 +1,26 @@
 package com.company;
 
-public class SpeedLimit {
-    private static long finish;
-    private static long start;
+import java.util.Date;
 
-    public static void start() {
-        start = System.currentTimeMillis();
+public class SpeedLimit {
+    private Date finish;
+    private Date start;
+    private long time;
+
+    public void start() {
+        start = new Date();
     }
 
-    public static void finish() throws InterruptedException {
-        finish = (System.currentTimeMillis() - start);
-        Thread.sleep(Config.getSpeed() - finish);
-        System.out.println(start);
-        System.out.println(finish);
+    public void finish() throws InterruptedException {
+        finish = new Date();
+        time = finish.getTime() - start.getTime();
+        System.out.println(100000000/(Config.getSpeed() - time));
+        if (time > 0) {
+            Thread.sleep((Config.getSpeed() - time));
+
+        }
+//        System.out.print("#");
+//        System.out.println(start.getTime());
+//        System.out.println(finish.getTime());
     }
 }

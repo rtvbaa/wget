@@ -25,22 +25,30 @@ public class Download implements Runnable {
 
         try
         {
+            Statistics statistics = new Statistics();
+            SpeedLimit speedLimit = new SpeedLimit();
 
             if (Files.exists(file.toPath())) {
                 Files.delete(file.toPath());
             }
 
+            statistics.start();
+
             InputStream inputStream = url.openStream();
             FileOutputStream fileOutputStream = new FileOutputStream(file);
-            byte dataBuffer[] = new byte[1024];
+            byte dataBuffer[] = new byte[100000000];
             int bytesRead;
-            while ((bytesRead = inputStream.read(dataBuffer, 0, 1024)) != -1) {
+            while ((bytesRead = inputStream.read(dataBuffer, 0, 100000000)) != -1) {
+                speedLimit.start();
                 filesize = filesize + dataBuffer.length;
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
+                speedLimit.finish();
             }
             System.out.println("Размер файла " + file.length());
-            Statistics.addBytes(filesize);
-        } catch (IOException e) {
+            statistics.addBytes(filesize);
+            statistics.finish();
+            statistics.showResult();
+        } catch (IOException | InterruptedException e) {
         }
 //        try {
 //            InputStream inputStream = url.openStream();

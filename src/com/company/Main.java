@@ -11,12 +11,7 @@ public class Main {
         Parser.parser(args);
         fileInStream();
 
-        Statistics statistics = new Statistics();
-        statistics.start();
-
         Threads.threadsdownloads();
 
-        statistics.finish();
-        statistics.showResult();
     }
 }
