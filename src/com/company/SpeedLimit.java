@@ -14,13 +14,8 @@ public class SpeedLimit {
     public void finish() throws InterruptedException {
         finish = new Date();
         time = finish.getTime() - start.getTime();
-        System.out.println(100000000/(Config.getSpeed() - time));
-        if (time > 0) {
-            Thread.sleep((Config.getSpeed() - time));
-
+        if ((Config.buffersize / Config.getSpeed() - this.time) > 0){
+            Thread.sleep(Config.buffersize / Config.getSpeed() - this.time);
         }
-//        System.out.print("#");
-//        System.out.println(start.getTime());
-//        System.out.println(finish.getTime());
     }
 }

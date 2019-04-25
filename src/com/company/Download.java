@@ -36,9 +36,9 @@ public class Download implements Runnable {
 
             InputStream inputStream = url.openStream();
             FileOutputStream fileOutputStream = new FileOutputStream(file);
-            byte dataBuffer[] = new byte[100000000];
+            byte dataBuffer[] = new byte[Config.buffersize];
             int bytesRead;
-            while ((bytesRead = inputStream.read(dataBuffer, 0, 100000000)) != -1) {
+            while ((bytesRead = inputStream.read(dataBuffer, 0, Config.buffersize)) != -1) {
                 speedLimit.start();
                 filesize = filesize + dataBuffer.length;
                 fileOutputStream.write(dataBuffer, 0, bytesRead);

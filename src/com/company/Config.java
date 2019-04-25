@@ -8,6 +8,7 @@ public class Config {
     private static String filepath;
     private static String foldername;
     private static Map<String, String> filenameAndUrl;
+    public static int buffersize = 100000;
 
     public static Map<String, String> getFilenameAndUrl() {
         return filenameAndUrl;
