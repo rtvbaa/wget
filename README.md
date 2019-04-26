@@ -22,4 +22,6 @@ http://example.com/image.jpg picture.jpg
 http://example.com/archive.zip first_archive.zip
 http://example.com/archive.zip second_archive.zip
 
--n 5 -l 10m -f Download/download.txt -o Download/
+-n 5 -l 10m -f Download/download.txt -o Download
+
+-n 5 -l 6000 -f Download/download.txt -o Download
