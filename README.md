@@ -25,3 +25,5 @@ http://example.com/archive.zip second_archive.zip
 -n 5 -l 10m -f Download/download.txt -o Download
 
 -n 5 -l 6000 -f Download/download.txt -o Download
+
+http://212.183.159.230/100MB.zip 100MB.zip
