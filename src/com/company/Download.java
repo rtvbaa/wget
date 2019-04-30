@@ -27,7 +27,7 @@ public class Download implements Runnable {
         {
             Statistics statistics = new Statistics();
             SpeedLimit speedLimit = new SpeedLimit();
-
+            System.out.println("Начинается скачивание файла: " + filename);
             if (Files.exists(file.toPath())) {
                 Files.delete(file.toPath());
             }

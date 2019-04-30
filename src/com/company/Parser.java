@@ -14,8 +14,6 @@ public class Parser {
         else if (argm1.contains("-l")) Config.setSpeed(arg);
         else if (argm1.contains("-f")) Config.setFilepath(arg);
         else if (argm1.contains("-o")) Config.setFoldername(arg);
-//        else if (argm1.contains("http")) Config.setUrl(arg);
-//        else Config.setFilename(arg);
     }
 }
 
