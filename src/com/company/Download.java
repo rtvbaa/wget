@@ -48,8 +48,12 @@ public class Download implements Runnable {
             statistics.addBytes(filesize);
             statistics.finish();
             statistics.showResult();
-        } catch (Exception e) {
-            System.out.println("ОШИБКА ЗАГРУЗКИ");
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Ошибка при чтении файла: " + e);
+        }
+        catch (Exception e) {
+            System.out.println("ОШИБКА ЗАГРУЗКИ" + e);
         }
     }
 }

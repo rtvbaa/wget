@@ -23,7 +23,9 @@ public class Config {
     }
 
     public static void setNumofthreads(String numofthreads) {
-        Config.numofthreads = Integer.parseInt(numofthreads);
+        if (Integer.parseInt(numofthreads) !=  0) {
+            Config.numofthreads = Integer.parseInt(numofthreads);
+        } else System.out.println("Неверное количество потоков: " + numofthreads + " Загружается 10 потоков");
     }
 
     public static Long getSpeed() {

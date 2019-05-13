@@ -17,20 +17,6 @@ public class Threads {
                 e.printStackTrace();
             }
         });
-//        executor.submit(() -> {
-//            for (Map.Entry entry : Config.getFilenameAndUrl().entrySet()) {
-//
-//                try {
-//                    System.out.println("start" + entry);
-//                    downloadFile(entry.getKey().toString(), entry.getValue().toString());
-//                    System.out.println("stop" + entry);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//
-//            }
-//        });
         executor.shutdown();
         executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
     }
