@@ -3,8 +3,8 @@ package com.company;
 import java.util.Map;
 
 public class Config {
-    private static int numofthreads;
-    private static Long speed;
+    private static int numofthreads = 10;
+    private static Long speed = (long)1024*1024 ;
     private static String filepath;
     private static String foldername;
     private static Map<String, String> filenameAndUrl;
@@ -31,7 +31,12 @@ public class Config {
     }
 
     public static void setSpeed(String speed) {
-        Config.speed = Long.parseLong(speed);
+        if (speed != null && speed.length() > 0 && speed.charAt(speed.length() - 1) == 'k') {
+            Config.speed = Long.parseLong(speed.substring(0, speed.length() - 1)) * 1024;
+        } else
+            if (speed != null && speed.length() > 0 && speed.charAt(speed.length() - 1) == 'm') {
+                Config.speed = Long.parseLong(speed.substring(0, speed.length() - 1)) * 1024 *1024;
+            } else Config.speed = Long.parseLong(speed);
     }
 
     public static String getFilepath() {
