@@ -11,7 +11,8 @@ public class Statistics {
     Date finish;
 
     public void showResult() {
-        System.out.println("Cкорость скачивания " + bytes / (finish.getTime() - start.getTime()));
+        System.out.println("Cкорость скачивания " + bytes / ((finish.getTime() - start.getTime())/1000) + "байт в секунду");
+        System.out.println("Время работы: " + (finish.getTime() - start.getTime())/1000 + "секунд");
     }
 
     public void start() {

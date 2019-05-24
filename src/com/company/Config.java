@@ -34,10 +34,10 @@ public class Config {
 
     public static void setSpeed(String speed) {
         if (speed != null && speed.length() > 0 && speed.charAt(speed.length() - 1) == 'k') {
-            Config.speed = Long.parseLong(speed.substring(0, speed.length() - 1)) * 1024;
+            Config.speed = Long.parseLong(speed.substring(0, speed.length() - 1));
         } else
             if (speed != null && speed.length() > 0 && speed.charAt(speed.length() - 1) == 'm') {
-                Config.speed = Long.parseLong(speed.substring(0, speed.length() - 1)) * 1024 *1024;
+                Config.speed = Long.parseLong(speed.substring(0, speed.length() - 1)) * 1024;
             } else Config.speed = Long.parseLong(speed);
     }
 
